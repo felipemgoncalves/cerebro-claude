@@ -23,11 +23,25 @@ Ele é brasileiro, de São Paulo, fala português. Trabalha em modo iterativo e 
 3. **Summit Saúde & Negócios** — evento julho 2026 (dermato como âncora)
 4. **CRM Conectta Hub** — Sheets + Apps Script v3 deployado
 
+## Acesso ao Cérebro (vault Obsidian)
+
+O vault está sincronizado com GitHub. Claude pode consultar qualquer nota em:
+`https://github.com/felipemgoncalves/cerebro-claude`
+
+**Repo:** `felipemgoncalves/cerebro-claude` (público)
+**Estrutura:** 00-Início, 01-Projetos, 02-Áreas, 03-Recursos, 04-Arquivo, 05-Meta
+
+### Fluxo de sincronização
+- **Gatilho 1:** Felipe pede ("salva", "sync", "fecha")
+- **Gatilho 2:** Claude avisa proativamente quando acumular material relevante
+- Claude gera `.md` novos/atualizados → Felipe arrasta pro vault → Obsidian Git sincroniza automaticamente com GitHub a cada 10 min
+
 ## Como ajudar melhor
 
 ### ✅ Faça
 - Responda em **português** (brasileiro)
 - Seja **direto**. Felipe valoriza eficiência.
+- **Consulte o vault** quando precisar de contexto profundo (via GitHub)
 - **Questione premissas** antes de executar, quando algo parecer fora do lugar
 - Use **contexto concreto** dos projetos (não respostas genéricas)
 - **Linke para as notas relevantes** do vault quando apropriado (`[[nome da nota]]`)
@@ -62,8 +76,8 @@ Ele é brasileiro, de São Paulo, fala português. Trabalha em modo iterativo e 
 
 ## Quando começar uma conversa
 
-1. Felipe pode colar o conteúdo do [[🏠 Home]] + hub do projeto em questão
-2. Confirme o contexto antes de prosseguir se estiver ambíguo
+1. Contexto geral já está na memória nativa do Claude
+2. Para mergulho profundo: Claude consulta o vault no GitHub diretamente
 3. Antes de produzir algo grande, alinhe abordagem (estilo iterativo dele)
 
 ## Atualizar o vault
@@ -77,3 +91,4 @@ Se uma conversa gera aprendizado/decisão que vale guardar:
 - [[Perfil - Felipe]]
 - [[Como usar este cofre]]
 - [[Log de atualizações]]
+- [[GitHub + Obsidian Git (setup)]]

@@ -6,7 +6,7 @@ atualizado: 2026-04-16
 
 # 📋 Log de atualizações
 
-> Histórico cronológico de mudanças no vault. Use para rastrear quando algo foi criado ou alterado de forma significativa.
+> Histórico cronológico de mudanças no vault.
 
 ---
 
@@ -16,68 +16,35 @@ atualizado: 2026-04-16
 **Escopo:** Criação completa do cofre a partir do histórico de conversas.
 
 ### Notas criadas
+**46 notas** — vault completo com estrutura PARA.
 
-#### 00 - Início
-- [[🏠 Home]]
-- [[Como usar este cofre]]
-- [[Índice MOC]]
+Ver [[2026-04-16 - Criação do cofre]] para detalhes.
 
-#### 01 - Projetos/Conexão Gestantes
-- [[Conexão Gestantes - Hub]]
-- [[Meta Ads - Estratégia]]
-- [[Meta Ads - Histórico de campanhas]]
-- [[Criativos - Biblioteca]]
-- [[Criativos - Vídeo 10 (referência)]]
-- [[Landing Page - Status e pendências]]
-- [[Copy - Diretrizes]]
-- [[Plano de relançamento]]
-- [[Integração Manychat + Hotmart]]
-- [[Prototipo - App Gestantes]]
+---
 
-#### 01 - Projetos/Conectta Hub
-- [[Conectta Hub - Hub]]
-- [[Posicionamento comercial]]
-- [[Prospecção B2B]]
-- [[Cliente - Bio-Oil]]
-- [[Cliente - Natura]]
-- [[Cliente - L'Oréal]]
-- [[Cliente - Softys-Ontex]]
-- [[Cliente - CIMED (playbook)]]
-- [[LinkedIn - Estratégia de conteúdo]]
-- [[Apresentação comercial]]
+## 2026-04-16 — Setup GitHub + Obsidian Git
 
-#### 01 - Projetos/Summit Saúde e Negócios
-- [[Summit - Hub]]
-- [[Conceito e posicionamento Summit]]
-- [[Dermatologia - Proposta inicial]]
+**Autor:** Claude + Felipe
+**Escopo:** Conectar vault ao GitHub para acesso automático pelo Claude.
 
-#### 01 - Projetos/CRM Conectta Hub
-- [[CRM - Hub]]
-- [[Arquitetura Apps Script v3]]
-- [[Bounces - Sistema de detecção]]
-- [[Dashboard HTML]]
+### O que mudou
+- Vault conectado ao repositório `felipemgoncalves/cerebro-claude` (público)
+- Plugin Obsidian Git configurado (auto-sync a cada 10 min)
+- Token de autenticação sem expiração configurado
+- Vault reaberto na pasta correta (onde `.git` e `.obsidian` coexistem)
 
-#### 02 - Áreas
-- [[Tráfego Pago - Conhecimento]]
-- [[Copywriting]]
-- [[Automação e Ferramentas]]
-- [[Comercial B2B]]
+### Notas criadas
+- [[GitHub + Obsidian Git (setup)]]
 
-#### 03 - Recursos
-- Ferramentas: [[Apollo.io]], [[ZeroBounce]], [[Make (Integromat)]], [[Manychat]], [[Hotmart]], [[Google Apps Script]], [[Meta Ads Manager]]
-- Templates: [[Template - Conversa com Claude]], [[Template - Decisão estratégica]], [[Template - Criativo Meta Ads]], [[Template - Nota atômica]]
-- Referências: [[Glossário Conectta]]
+### Notas atualizadas
+- [[Instruções para Claude]] — adicionado acesso ao vault via GitHub + fluxo de sincronização
+- [[Perfil - Felipe]] — adicionado GitHub username e setup técnico
+- [[Log de atualizações]] — esta entrada
 
-#### 04 - Arquivo
-- [[2026-04-16 - Criação do cofre]]
-
-#### 05 - Meta
-- [[Perfil - Felipe]]
-- [[Instruções para Claude]]
-- [[Log de atualizações]]
-
-### Total
-**46 notas** criadas na inicialização do vault.
+### Fluxo definido
+- Felipe diz "salva" / "sync" / "fecha" → Claude gera `.md`
+- Claude avisa proativamente quando acumular neurônios
+- Obsidian Git sincroniza com GitHub automaticamente
 
 ---
 

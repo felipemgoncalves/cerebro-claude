@@ -12,6 +12,7 @@ atualizado: 2026-04-16
 - **Localização:** São Paulo, Brasil
 - **Idioma:** Português (brasileiro)
 - **Papel:** Founder do [[Conectta Hub - Hub]] + dono/operador da [[Conexão Gestantes - Hub]]
+- **GitHub:** felipemgoncalves
 
 ## Empresas
 
@@ -29,12 +30,12 @@ Plataforma / infoproduto digital com **materiais clínicos editáveis** para obs
 - Volta para **refinar colaborativamente**
 - Gerencia Meta Ads, produção de criativo, operação comercial B2B direto
 
-## Pontos fortes aparentes
+## Setup técnico
 
-- Estratégico (pensa em posicionamento, não só em execução)
-- Sistêmico (mapeia fluxos, automatiza, documenta)
-- Empreendedor multi-frente (3+ projetos simultâneos)
-- Paciente com processos iterativos
+- **Mac principal** (MacBook Pro) — desktop de trabalho
+- **Obsidian** no Mac com vault "Cérebro Claude"
+- **Obsidian Git** sincronizando com GitHub a cada 10 min
+- Trabalho centralizado no Mac — não usa Obsidian em outras máquinas
 
 ## Preferências de comunicação com Claude
 
@@ -51,3 +52,4 @@ Plataforma / infoproduto digital com **materiais clínicos editáveis** para obs
 ## Relacionado
 - [[Instruções para Claude]]
 - [[🏠 Home]]
+- [[GitHub + Obsidian Git (setup)]]
