@@ -11,10 +11,10 @@
             "id": "124594b762f8e0ab",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Nova aba"
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
             }
           }
         ]
@@ -180,6 +180,11 @@
   },
   "active": "124594b762f8e0ab",
   "lastOpenFiles": [
+    "01 - Projetos/Hypera/Hypera 2026.md",
+    "01 - Projetos/Summit Saúde e Negócios/Pediatria 2026/Summit S&N Pediatria 2026.md",
+    "01 - Projetos/Summit Saúde e Negócios/Pediatria 2026",
+    "01 - Projetos/Summit Saúde e Negócios/Conceito e posicionamento Summit.md",
+    "01 - Projetos/Hypera",
     "04 - Arquivo/Histórico de conversas/2026-04-16 - Setup GitHub e Obsidian Git.md",
     "03 - Recursos/Ferramentas/GitHub + Obsidian Git (setup).md",
     "03 - Recursos/GitHub + Obsidian Git (setup).md"
