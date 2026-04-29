@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "85de2e0659fac1ab",
+        "id": "c55c68adde78cdd7",
         "type": "tabs",
         "children": [
           {
-            "id": "94fe3cc9dcf85587",
+            "id": "124594b762f8e0ab",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "icon": "lucide-file",
+              "title": "Nova aba"
             }
           }
         ]
@@ -178,7 +178,7 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "94fe3cc9dcf85587",
+  "active": "124594b762f8e0ab",
   "lastOpenFiles": [
     "04 - Arquivo/Histórico de conversas/2026-04-16 - Setup GitHub e Obsidian Git.md",
     "03 - Recursos/Ferramentas/GitHub + Obsidian Git (setup).md",
