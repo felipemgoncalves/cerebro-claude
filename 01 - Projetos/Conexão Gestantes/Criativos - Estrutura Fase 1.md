@@ -1,8 +1,13 @@
 ---
-tags: [conexao-gestantes, criativos, meta-ads, referencia, recurso]
+tags:
+  - conexao-gestantes
+  - criativos
+  - meta-ads
+  - referencia
+  - recurso
 data: 2026-04-23
 ultima-atualizacao: 2026-05-05
-relacionado: "[[CG-Fase1-Retomada-AbrilMaio2026]]"
+relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 ---
 
 # CG — Estrutura Final dos Criativos Fase 1

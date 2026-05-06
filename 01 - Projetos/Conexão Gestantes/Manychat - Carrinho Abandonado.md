@@ -1,7 +1,14 @@
 ---
-tags: [conexao-gestantes, manychat, whatsapp, automacao, make, hotmart, em-andamento]
+tags:
+  - conexao-gestantes
+  - manychat
+  - whatsapp
+  - automacao
+  - make
+  - hotmart
+  - em-andamento
 data: 2026-05-05
-relacionado: "[[CG-Fase1-Retomada-AbrilMaio2026]]"
+relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 status: implementacao-pendente
 ---
 

@@ -1,7 +1,12 @@
 ---
-tags: [conexao-gestantes, whatsapp, mensagens, fluxo, vendas]
+tags:
+  - conexao-gestantes
+  - whatsapp
+  - mensagens
+  - fluxo
+  - vendas
 data: 2026-05-05
-relacionado: "[[CG-Fase1-Retomada-AbrilMaio2026]]"
+relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 status: parcialmente-implementado
 ---
 

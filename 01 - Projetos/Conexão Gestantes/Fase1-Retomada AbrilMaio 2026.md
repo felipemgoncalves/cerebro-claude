@@ -224,9 +224,9 @@ proxima-checagem: 2026-05-12
 
 ## Links
 
-- [[CG-Estrutura-Criativos-Fase1]]
-- [[CG-Playbook-Otimizacao-LP-Hotmart]]
-- [[CG-Manychat-Carrinho-Abandonado]]
-- [[CG-Fluxo-WhatsApp]]
+- [[Criativos - Estrutura Fase 1]]
+- [[Playbook - Otimizacão LP Hotmart]]
+- [[Manychat - Carrinho Abandonado]]
+- [[WhatsApp - Fluxo de mensagens]]
 - [[CG-Plano-Retomada-v2-Abril2026]]
 - [[CG-Analise-Historica-9meses]]

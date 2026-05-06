@@ -1,8 +1,14 @@
 ---
-tags: [conexao-gestantes, analise, dados, fase-1, meta-ads, antes-depois]
+tags:
+  - conexao-gestantes
+  - analise
+  - dados
+  - fase-1
+  - meta-ads
+  - antes-depois
 data: 2026-05-05
 periodo: 2026-04-23/2026-05-04
-relacionado: "[[CG-Fase1-Retomada-AbrilMaio2026]]"
+relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 ---
 
 # CG — Análise Consolidada dos 12 Dias da Fase 1 (23/04 a 04/05)

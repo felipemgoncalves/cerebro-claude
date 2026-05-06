@@ -107,9 +107,9 @@ Quando conseguir ver, manda screenshot da estrutura pra continuar com:
 
 ## Links pra outras notas relacionadas
 
-- [[CG-Fase1-Retomada-AbrilMaio2026]] — projeto principal
-- [[CG-Manychat-Carrinho-Abandonado]] — em andamento (técnico)
-- [[CG-Fluxo-WhatsApp]] — mensagens e estratégia
-- [[CG-Analise-12dias-Fase1]] — dados consolidados
-- [[CG-Estrutura-Criativos-Fase1]] — referência criativos
-- [[CG-Playbook-Otimizacao-LP-Hotmart]] — recurso reutilizável
+- [[Fase1-Retomada AbrilMaio 2026]] — projeto principal
+- [[Manychat - Carrinho Abandonado]] — em andamento (técnico)
+- [[WhatsApp - Fluxo de mensagens]] — mensagens e estratégia
+- [[Analise - 12dias Fase1]] — dados consolidados
+- [[Criativos - Estrutura Fase 1]] — referência criativos
+- [[Playbook - Otimizacão LP Hotmart]] — recurso reutilizável

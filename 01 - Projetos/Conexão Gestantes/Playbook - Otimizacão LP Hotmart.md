@@ -1,8 +1,14 @@
 ---
-tags: [conexao-gestantes, hotmart-pages, performance, lp, playbook, recurso]
+tags:
+  - conexao-gestantes
+  - hotmart-pages
+  - performance
+  - lp
+  - playbook
+  - recurso
 data: 2026-05-01
 ultima-atualizacao: 2026-05-05
-relacionado: "[[CG-Fase1-Retomada-AbrilMaio2026]]"
+relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 ---
 
 # Playbook de Otimização da LP — Hotmart Pages
