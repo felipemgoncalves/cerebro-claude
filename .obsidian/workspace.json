@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Projetos/Conexão Gestantes/Plano de relançamento.md",
+                "file": "01 - Projetos/Conexão Gestantes/Integração Manychat + Hotmart.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Plano de relançamento"
+              "title": "Integração Manychat + Hotmart"
             }
           }
         ],
@@ -225,8 +225,9 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "08691d9244ed0445",
+  "active": "6d7a1b4b23344ac6",
   "lastOpenFiles": [
+    "04 - Arquivo/Histórico de conversas/Plano de relançamento.md",
     "01 - Projetos/Conexão Gestantes.zip",
     "01 - Projetos/Conexão Gestantes/Integração Manychat + Hotmart.md",
     "01 - Projetos/Conexão Gestantes/Landing Page - Status e pendências.md",
