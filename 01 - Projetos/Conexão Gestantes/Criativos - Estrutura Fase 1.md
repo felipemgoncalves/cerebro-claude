@@ -6,7 +6,7 @@ tags:
   - referencia
   - recurso
 data: 2026-04-23
-ultima-atualizacao: 2026-05-05
+ultima-atualizacao: 2026-05-06
 relacionado: "[[Fase1-Retomada AbrilMaio 2026]]"
 ---
 
@@ -139,3 +139,48 @@ Acesse agora e use na sua próxima consulta 👇
 3. **Estático 17 e Vídeo 13** já provaram que não convertem em LL1% Compradores nem Aberto. Mantidos rodando na Camp 04 (LL1% ViewContent) só pra fechar teste — público novo pode revelar comportamento diferente, custo zero deixar.
 
 4. **Próxima rodada de criativos:** quando Vídeo 15 começar a fadigar, produzir 3-4 novos seguindo a fórmula validada (mesa de madeira, POV obstetra, materiais permitidos da lista atualizada).
+
+---
+
+## Diretrizes atemporais de produção
+
+Princípios que se aplicam a qualquer criativo novo, independente de fórmula da rodada:
+
+1. **Mobile-first sempre** (9:16 prioritário)
+2. **Sem som = compreensível** (público assiste no feed silencioso)
+3. **Hook nos primeiros 3 segundos** (decisivo pra retenção)
+4. **Texto em tela** pra reforçar a mensagem
+5. **Uma ideia por criativo** — não misturar ofertas, ângulos ou benefícios
+
+## Organização de assets fora do Obsidian
+
+Sugestão de estrutura externa (Google Drive ou Dropbox) pra manter os arquivos brutos e finais organizados:
+
+```
+/Conexão Gestantes - Criativos
+  /brutos              — gravações originais, takes
+  /edicoes-finais      — .mp4 prontos pra subir
+  /thumbs              — capas e variações de thumbnail
+  /textos              — copies associados a cada criativo
+  /assets-comuns       — músicas, transições, overlays reutilizáveis
+```
+
+Cada criativo no Obsidian pode linkar pro caminho relevante quando útil.
+
+## Backlog de hipóteses de criativos futuros
+
+Ideias a produzir em próximas rodadas, em ordem de prioridade histórica:
+
+### Alta prioridade
+- [ ] **Testemunhal / depoimento de obstetra** (cliente real falando do produto)
+- [ ] **Kit amostra grátis** como gancho de captura (lead magnet pré-checkout)
+
+### Média prioridade
+- [ ] **Demo rápida do produto** (tela a tela, formato POV)
+- [ ] **Antes/depois** (fluxo de trabalho do obstetra com vs sem o produto)
+- [ ] **"Ouça o áudio que tá viralizando"** (tendência de plataforma adaptada)
+
+### Baixa prioridade / experimental
+- [ ] **Vídeo 14 v2** dedicado (se ROAS 18x se confirmar em volume maior)
+- [ ] Variações de Vídeo 15 com materiais diferentes da lista permitida
+- [ ] Material "O Nascimento de uma Mãe" se qualidade visual melhorar
