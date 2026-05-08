@@ -11,10 +11,14 @@
             "id": "a3cf017509429d85",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "type": "markdown",
+              "state": {
+                "file": "01 - Projetos/Conexão Gestantes/Continuidade-Proxima-Conversa.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Continuidade-Proxima-Conversa"
             }
           }
         ]
