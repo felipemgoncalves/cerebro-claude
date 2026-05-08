@@ -100,16 +100,23 @@ Tag `Carrinho Abandonado CG` aplicada → fluxo dispara.
    ↓
 [Atraso Inteligente: 23h + janela 8-21h]
    ↓
+[Condição: Tag está Respondeu Ao Vivo OR Membro CG?]
+   ├─ Verde (TRUE) → encerra
+   └─ Vermelha (FALSE) → segue para M2
+   ↓
 [M2 (Mensagem #1): "voltei aqui, deixei abaixo as dúvidas..." + 3 botões]
    ├─ "Como eu acesso?" → [Mensagem #2 "Eu te explico"]
    │     ├─ "Quero o link" → [M4 com Smart Link Após Acesso]
    │     │     └─ Próximo Passo → [Ações #2: tag Após acesso]
    │     │           └─ [Atraso #3: 1h + janela 8-21h]
-   │     │                 └─ [Condição #1: Tag não é Membro CG]
-   │     │                       ├─ TRUE (não é membro) → [M9]
-   │     │                       └─ FALSE (é membro) → encerra
+   │     │                 └─ [Condição: Tag está Respondeu Ao Vivo OR Membro CG?]
+   │     │                       ├─ Verde (TRUE) → encerra
+   │     │                       └─ Vermelha (FALSE) → [M9]
    │     ├─ "Tenho outra dúvida" → [M5]
-   │     └─ Próximo Passo (sem clique) → [Atraso 23h] → [M8] → fluxo M8
+   │     └─ Próximo Passo (sem clique) → [Atraso 23h]
+   │           └─ [Condição: Tag está Respondeu Ao Vivo OR Membro CG?]
+   │                 ├─ Verde (TRUE) → encerra
+   │                 └─ Vermelha (FALSE) → [M8] → fluxo M8
    │
    ├─ "Quero ver amostra" → [M3 "Legal!"]
    │     └─ [Atraso 10s]
@@ -122,7 +129,10 @@ Tag `Carrinho Abandonado CG` aplicada → fluxo dispara.
    │
    ├─ "Outra dúvida" → [M5]
    │
-   └─ Próximo Passo (sem clique) → [Atraso 23h] → [M8 fallback] → fluxo M8
+   └─ Próximo Passo (sem clique) → [Atraso 23h]
+         └─ [Condição: Tag está Respondeu Ao Vivo OR Membro CG?]
+               ├─ Verde (TRUE) → encerra
+               └─ Vermelha (FALSE) → [M8] → fluxo M8
 ```
 
 ### Caminho convergente após M5 (resposta dúvida)
@@ -132,7 +142,7 @@ M5 → [Ações: Marcar Aberta + Tag Dúvida-Lead]
    → [Atraso #5: 23h]
       → [Condição: Tag está [CG] Respondeu Ao Vivo?]
          ├─ TRUE → encerra
-         └─ FALSE → [Tag Lead Frio] → encerra
+         └─ FALSE → [Tag Lead Frio - Carrinho] → encerra
 ```
 
 ### Caminho M8 (fallback de não-clique)
@@ -142,7 +152,7 @@ M8 → (sem Ações intermediárias, vai DIRETO pro Atraso #5)
    → [Atraso #5: 23h]
       → [Condição: Tag está [CG] Respondeu Ao Vivo?]
          ├─ TRUE → encerra
-         └─ FALSE → [Tag Lead Frio] → encerra
+         └─ FALSE → [Tag Lead Frio - Carrinho] → encerra
 ```
 
 **Importante:** M8 **não passa pelas Ações** (Marcar Aberta + Tag Dúvida-Lead) que vêm depois da M5. Razão: pessoa caiu no fallback por silêncio, não pediu dúvida — não deve ser marcada como "Dúvida-Lead".
@@ -152,12 +162,52 @@ M8 → (sem Ações intermediárias, vai DIRETO pro Atraso #5)
 ```
 M9 (botões: "Tenho dúvida" / "Outra hora")
    ├─ "Tenho dúvida" → [M5] (caminho de Live Chat)
-   ├─ "Outra hora" → [Tag Lead Frio] direto (declaração explícita)
+   ├─ "Outra hora" → [Tag Lead Frio - Carrinho] direto (declaração explícita)
    └─ Próximo Passo (silêncio) → [Atraso 23h]
                                   → [Condição: Tag está Respondeu Ao Vivo?]
                                      ├─ TRUE → encerra
-                                     └─ FALSE → [Tag Lead Frio]
+                                     └─ FALSE → [Tag Lead Frio - Carrinho]
 ```
+
+---
+
+## Condições de proteção em todos os atrasos longos
+
+Todos os atrasos longos (≥ 1h) têm uma Condição imediatamente depois pra **interceptar** subscribers que interagiram durante o atraso. Sem isso, o fluxo automatizado continuaria mandando mensagens mesmo pra quem já está sendo atendido pelo humano (Live Chat) ou já comprou.
+
+### Configuração padrão da Condição
+
+Mesma estrutura nos 4 pontos do fluxo:
+
+```
+Condição:
+- Tag está [CG] Respondeu Ao Vivo
+- Tag está Membro CG
+
+Operador: qualquer uma das condições (OR)
+
+Saída Verde (TRUE = corresponde a alguma) → encerra (sem destino)
+Saída Vermelha (FALSE = não corresponde a nenhuma) → continua o fluxo
+```
+
+### Onde está aplicada (4 pontos)
+
+| Ponto | Posição | Próximo passo (vermelha) |
+|---|---|---|
+| 1 | Após Atraso 23h pós-M1 | M2 (3 botões) |
+| 2 | Após Atraso 23h fallback M2 | M8 (mensagem genérica) |
+| 3 | Após Atraso 23h fallback Mensagem #2 | M8 (mensagem genérica) |
+| 4 | Após Atraso #3 (1h pós-clique link) | M9 (follow-up "conseguiu olhar?") |
+
+### Lógica de decisão
+
+- Pessoa **respondeu via texto livre** durante o atraso → tag `Respondeu Ao Vivo` aplicada pelo Default Reply → Condição vê tag → vai pra verde → **encerra** (humano atende)
+- Pessoa **comprou** durante o atraso → tag `Membro CG` aplicada pelo webhook nativo → Condição vê tag → vai pra verde → **encerra**
+- Pessoa **silêncio total** → nenhuma tag → vai pra vermelha → **continua** o fluxo
+
+### Por que estilo POSITIVO ("está") em vez de NEGATIVO ("não é")
+
+Padronização. As tags listadas representam **motivos de exclusão** (encerrar). É mais intuitivo de ler: *"se a pessoa tem qualquer dessas tags de exclusão, encerra"*. Misturar `Tag está` com `Tag não é` em uma mesma Condição quebra a lógica.
 
 ---
 
@@ -184,7 +234,7 @@ Automação separada do fluxo principal, fica em **Automation** do Manychat:
 
 ### Lógica
 
-Roda em paralelo ao fluxo principal. Se a pessoa responder em qualquer momento (em texto livre — não em botão), a tag é aplicada e o humano via Live Chat assume. Quando a Condição do fluxo principal rodar, vê a tag e encerra (não aplica Lead Frio).
+Roda em paralelo ao fluxo principal. Se a pessoa responder em qualquer momento (em texto livre — não em botão), a tag é aplicada e o humano via Live Chat assume. Quando a Condição do fluxo principal rodar, vê a tag e encerra (não aplica `Lead Frio - Carrinho`).
 
 ---
 
@@ -197,7 +247,8 @@ Roda em paralelo ao fluxo principal. Se a pessoa responder em qualquer momento (
 | `[CG] Clicou link - Após Amostra` | Smart Link da M7 ao clicar | Métrica + segmentação caminho "Quero ver amostra" |
 | `[CG] Dúvida - Lead` | Após M5 (cliques explícitos em "Outra dúvida"/"Tenho outra dúvida") | Marcar lead que pediu atendimento |
 | `[CG] Respondeu Ao Vivo` | Default Reply trigger global | Marcar quem interagiu via texto livre — humano assumir |
-| `[CG] Lead Frio` | Após Atraso 23h sem resposta nas Condições | Segmento pra reativação futura |
+| `[CG] Lead Frio` | (genérica — não aplicada por esse fluxo) | Reservada para outros fluxos futuros (campanhas Meta, newsletter, etc.) |
+| `[CG] Lead Frio - Carrinho` | Após Atraso 23h sem resposta nas Condições do fluxo de carrinho | Segmento específico de leads que tiveram alta intenção (chegaram a abrir checkout) e esfriaram |
 | `Membro CG` | Webhook nativo Manychat-Hotmart de Compra Aprovada | Cliente — não receber mais mensagens de recuperação |
 
 ### Filosofia das tags
@@ -489,4 +540,4 @@ Atualmente a M9 ("conseguiu dar uma olhada no link?") chega pra todo mundo que r
 
 - **06/05/2026:** Implementação inicial do cenário Make (Webhook Hotmart → Create Subscriber → Manage Tags). Confirmado bug da integração nativa Manychat-Hotmart pra carrinho abandonado.
 - **06/05/2026:** Construção do fluxo conversacional Vitória completo no Manychat.
-- **07/05/2026:** Plano C implementado (Default Reply + tag `Respondeu Ao Vivo`). Fallbacks da M2 e Mensagem #2 configurados. M5 e M8 separados (Ações só pra M5). Smart Links com UTM diferenciada configurados. Resume handler adicionado no Make pra cobrir leads existentes. Lista histórica de 27 leads tratada por outro caminho (não automatizado). Aguardando primeiro lead real pra validar end-to-end.
+- **07/05/2026:** Plano C implementado (Default Reply + tag `Respondeu Ao Vivo`). Fallbacks da M2 e Mensagem #2 configurados. M5 e M8 separados (Ações só pra M5). Smart Links com UTM diferenciada configurados. Resume handler adicionado no Make pra cobrir leads existentes. Lista histórica de 27 leads tratada por outro caminho (não automatizado). Tag de Lead Frio do fluxo trocada de genérica `[CG] Lead Frio` pra específica `[CG] Lead Frio - Carrinho` (preserva tag genérica pra outros fluxos futuros). **Condições de proteção adicionadas em 4 pontos** (após cada atraso longo): checa `Respondeu Ao Vivo OR Membro CG` e encerra se a pessoa interagiu/comprou durante o atraso — antes o fluxo continuava cego. Aguardando primeiro lead real pra validar end-to-end.
