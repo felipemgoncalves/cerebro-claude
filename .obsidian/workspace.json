@@ -11,10 +11,14 @@
             "id": "a3cf017509429d85",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "01 - Projetos/Conexão Gestantes/Manychat - Carrinho Abandonado.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Manychat - Carrinho Abandonado"
             }
           }
         ]
@@ -188,7 +192,7 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "a3cf017509429d85",
+  "active": "08691d9244ed0445",
   "lastOpenFiles": [
     "01 - Projetos/Conexão Gestantes/Manychat - Carrinho Abandonado.md",
     "01 - Projetos/Conexão Gestantes/Playbook - Otimizacão LP Hotmart.md",
