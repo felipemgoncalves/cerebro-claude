@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Viabilidade — Summit Saúde & Negócios Pediatria 2026</title>
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --gold: #BA7517;
+    --light-gray: #F5F5F5;
+    --mid-gray: #888780;
+    --dark-text: #1A1A1A;
+    --green: #2E7D32;
+    --green-bg: #E8F5E9;
+    --red: #A32D2D;
+    --red-bg: #FCEBEB;
+    --orange: #BF360C;
+    --orange-bg: #FFF3EE;
+    --blue: #1565C0;
+    --blue-bg: #E3F2FD;
+    --warn-bg: #FAEEDA;
+    --warn-text: #633806;
+    --border: #E0E0E0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #FAFAFA;
+    color: var(--dark-text);
+    margin: 0;
+    padding: 24px;
+    line-height: 1.4;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  h1 {
+    font-size: 22px;
+    color: var(--navy);
+    margin: 0 0 4px 0;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .description {
+    color: var(--mid-gray);
+    font-size: 13px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .event-box {
+    background: var(--blue-bg);
+    border: 1px solid #BBDEFB;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+
+  .event-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .event-row label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    flex: 1;
+  }
+
+  .event-row input[type=range] {
+    width: 180px;
+    flex-shrink: 0;
+    accent-color: var(--blue);
+  }
+
+  .event-val {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--blue);
+    min-width: 100px;
+    text-align: right;
+  }
+
+  .event-note {
+    font-size: 11px;
+    color: var(--mid-gray);
+    margin-top: 6px;
+  }
+
+  .tax-box {
+    background: var(--light-gray);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+
+  .tax-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .tax-row label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-text);
+    flex: 1;
+  }
+
+  .tax-row input[type=range] {
+    width: 180px;
+    flex-shrink: 0;
+  }
+
+  .tax-val {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--red);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .tax-note {
+    font-size: 11px;
+    color: var(--mid-gray);
+    margin-top: 6px;
+  }
+
+  .section {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .row label {
+    font-size: 13px;
+    color: var(--dark-text);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .row input[type=range] {
+    width: 140px;
+    flex-shrink: 0;
+    accent-color: var(--gold);
+  }
+
+  .row .val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-text);
+    min-width: 100px;
+    text-align: right;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  .status-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .status-ok { background: var(--green-bg); color: var(--green); }
+  .status-warn { background: var(--warn-bg); color: var(--warn-text); }
+  .status-bad { background: var(--red-bg); color: var(--red); }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .metrics2 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .metric {
+    background: var(--light-gray);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--mid-gray);
+    margin-bottom: 4px;
+  }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .metric-value.green { color: var(--green); }
+  .metric-value.red { color: var(--red); }
+  .metric-value.orange { color: var(--warn-text); }
+  .metric-value.neutral { color: var(--dark-text); }
+
+  .bar-wrap {
+    margin-bottom: 12px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .bar-label {
+    min-width: 130px;
+    color: var(--mid-gray);
+  }
+
+  .bar-bg {
+    flex: 1;
+    height: 22px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .bar-amount {
+    min-width: 110px;
+    text-align: right;
+    color: var(--dark-text);
+    font-weight: 600;
+  }
+
+  .footer-note {
+    margin-top: 30px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--mid-gray);
+    font-style: italic;
+  }
+
+  .reset-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--mid-gray);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .reset-btn:hover { background: var(--light-gray); }
+
+  @media (max-width: 720px) {
+    .container { padding: 20px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .metrics2 { grid-template-columns: repeat(1, 1fr); }
+    .bar-label { min-width: 80px; }
+    .row { flex-wrap: wrap; }
+    .row input[type=range] { width: 100%; }
+    .tax-row, .event-row { flex-wrap: wrap; }
+    .tax-row input[type=range], .event-row input[type=range] { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Viabilidade Financeira</h1>
+    <div class="subtitle">Summit Saúde &amp; Negócios — Pediatria 2026</div>
+    <div class="description">Ajuste os sliders abaixo para simular cenários. Os valores são calculados em tempo real.</div>
+
+    <!-- PARTICIPANTES -->
+    <div class="event-box">
+      <div class="event-row">
+        <label>Participantes do evento (total presente)</label>
+        <input type="range" id="nParticipantes" min="0" max="300" step="5" value="100">
+        <span class="event-val" id="vNParticipantes">100 pessoas</span>
+      </div>
+      <div class="event-note">Número total de pessoas presentes no evento (independente de pagarem ingresso ou não). Custos por pessoa, como buffet, calculam com base neste valor.</div>
+    </div>
+
+    <!-- IMPOSTO -->
+    <div class="tax-box">
+      <div class="tax-row">
+        <label>Alíquota de imposto</label>
+        <input type="range" id="aliquota" min="4" max="20" step="0.5" value="10">
+        <span class="tax-val" id="vAliquota">10%</span>
+      </div>
+      <div class="tax-note">Simples Nacional: CNAE 8230-0/01 começa em 6%. Estimativa atual: 10%. Ajuste conforme orientação do contador.</div>
+    </div>
+
+    <!-- RECEITAS -->
+    <div class="section">
+      <div class="section-title">receitas</div>
+
+      <div class="row">
+        <label>Valor cota Ouro</label>
+        <input type="range" id="vOuro" min="0" max="250000" step="5000" value="150000">
+        <span class="val" id="vVOuro">R$ 150.000</span>
+      </div>
+
+      <div class="row">
+        <label>Cotas Ouro (qtd)</label>
+        <input type="range" id="nOuro" min="0" max="3" step="1" value="1">
+        <span class="val" id="vNOuro">1 cota</span>
+      </div>
+
+      <div class="row">
+        <label>Valor cota Prata</label>
+        <input type="range" id="vPrata" min="0" max="100000" step="5000" value="60000">
+        <span class="val" id="vVPrata">R$ 60.000</span>
+      </div>
+
+      <div class="row">
+        <label>Cotas Prata (qtd)</label>
+        <input type="range" id="nPrata" min="0" max="5" step="1" value="2">
+        <span class="val" id="vNPrata">2 cotas</span>
+      </div>
+
+      <div class="row">
+        <label>Valor cota Bronze</label>
+        <input type="range" id="vBronze" min="0" max="50000" step="5000" value="25000">
+        <span class="val" id="vVBronze">R$ 25.000</span>
+      </div>
+
+      <div class="row">
+        <label>Cotas Bronze (qtd)</label>
+        <input type="range" id="nBronze" min="0" max="5" step="1" value="2">
+        <span class="val" id="vNBronze">2 cotas</span>
+      </div>
+
+      <div class="row">
+        <label>Ingressos vendidos (pagos)</label>
+        <input type="range" id="nIngressos" min="0" max="150" step="5" value="80">
+        <span class="val" id="vNIngressos">80 ingressos</span>
+      </div>
+
+      <div class="row">
+        <label>Ticket médio ingresso</label>
+        <input type="range" id="vIngresso" min="0" max="1200" step="50" value="450">
+        <span class="val" id="vVIngresso">R$ 450</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CUSTOS -->
+    <div class="section">
+      <div class="section-title">custos operacionais</div>
+
+      <div class="row">
+        <label>Local (Casa Loane)</label>
+        <input type="range" id="cLocal" min="0" max="40000" step="1000" value="20000">
+        <span class="val" id="vCLocal">R$ 20.000</span>
+      </div>
+
+      <div class="row">
+        <label>Palestrantes e conteúdo</label>
+        <input type="range" id="cConteudo" min="0" max="80000" step="5000" value="50000">
+        <span class="val" id="vCConteudo">R$ 50.000</span>
+      </div>
+
+      <div class="row">
+        <label>Coffee / alimentação (R$/pessoa)</label>
+        <input type="range" id="cCoffee" min="0" max="300" step="10" value="150">
+        <span class="val" id="vCCoffee">R$ 150/pessoa</span>
+      </div>
+
+      <div class="row">
+        <label>Produção e audiovisual</label>
+        <input type="range" id="cProducao" min="0" max="30000" step="1000" value="12000">
+        <span class="val" id="vCProducao">R$ 12.000</span>
+      </div>
+
+      <div class="row">
+        <label>Identidade visual e marketing</label>
+        <input type="range" id="cMkt" min="0" max="15000" step="1000" value="6000">
+        <span class="val" id="vCMkt">R$ 6.000</span>
+      </div>
+
+      <div class="row">
+        <label>Equipe de filmagem</label>
+        <input type="range" id="cFilm" min="0" max="20000" step="1000" value="10000">
+        <span class="val" id="vCFilm">R$ 10.000</span>
+      </div>
+
+      <div class="row">
+        <label>Contingência</label>
+        <input type="range" id="cConting" min="0" max="20000" step="1000" value="8000">
+        <span class="val" id="vCConting">R$ 8.000</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- STATUS -->
+    <div id="statusBox" class="status-box status-ok">calculando...</div>
+
+    <!-- MÉTRICAS PRINCIPAIS -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">receita total</div>
+        <div class="metric-value neutral" id="mReceita">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">imposto</div>
+        <div class="metric-value orange" id="mImposto">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">custo operacional</div>
+        <div class="metric-value neutral" id="mCusto">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">custo total</div>
+        <div class="metric-value neutral" id="mCustoTotal">—</div>
+      </div>
+    </div>
+
+    <div class="metrics2">
+      <div class="metric">
+        <div class="metric-label">lucro Conectta</div>
+        <div class="metric-value" id="mLucro">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">margem líquida</div>
+        <div class="metric-value" id="mMargem">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">economia vs 10%</div>
+        <div class="metric-value" id="mEconomia">—</div>
+      </div>
+    </div>
+
+    <!-- BARRAS -->
+    <div class="bar-wrap">
+      <div class="bar-row">
+        <span class="bar-label">Ouro</span>
+        <div class="bar-bg"><div class="bar-fill" id="barOuro" style="background:#BA7517;width:0%"></div></div>
+        <span class="bar-amount" id="barOuroVal">—</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Prata</span>
+        <div class="bar-bg"><div class="bar-fill" id="barPrata" style="background:#888780;width:0%"></div></div>
+        <span class="bar-amount" id="barPrataVal">—</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Bronze</span>
+        <div class="bar-bg"><div class="bar-fill" id="barBronze" style="background:#D85A30;width:0%"></div></div>
+        <span class="bar-amount" id="barBronzeVal">—</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Ingressos</span>
+        <div class="bar-bg"><div class="bar-fill" id="barIng" style="background:#185FA5;width:0%"></div></div>
+        <span class="bar-amount" id="barIngVal">—</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Imposto</span>
+        <div class="bar-bg"><div class="bar-fill" id="barImp" style="background:#A32D2D;width:0%"></div></div>
+        <span class="bar-amount" id="barImpVal">—</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Custo operacional</span>
+        <div class="bar-bg"><div class="bar-fill" id="barCusto" style="background:#534AB7;width:0%"></div></div>
+        <span class="bar-amount" id="barCustoVal">—</span>
+      </div>
+    </div>
+
+    <button class="reset-btn" onclick="resetar()">↺ Voltar aos valores iniciais</button>
+
+    <div class="footer-note">
+      Conectta Hub · Calculadora interna de planejamento · Valores sujeitos a ajuste conforme cenário real.<br>
+      Meta de lucro líquido: R$ 75.000. Receitas adicionais do Lounge VIP não estão consideradas.
+    </div>
+  </div>
+
+<script>
+  const fmt = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+  const pct = v => v.toFixed(1) + '%';
+
+  const defaults = {
+    nParticipantes: 100, aliquota: 10,
+    vOuro: 150000, nOuro: 1,
+    vPrata: 60000, nPrata: 2,
+    vBronze: 25000, nBronze: 2,
+    nIngressos: 80, vIngresso: 450,
+    cLocal: 20000, cConteudo: 50000, cCoffee: 150, cProducao: 12000,
+    cMkt: 6000, cFilm: 10000, cConting: 8000
+  };
+
+  function calc() {
+    const nPart = +document.getElementById('nParticipantes').value;
+    const aliq = +document.getElementById('aliquota').value / 100;
+    const vOuro = +document.getElementById('vOuro').value;
+    const nOuro = +document.getElementById('nOuro').value;
+    const vPrata = +document.getElementById('vPrata').value;
+    const nPrata = +document.getElementById('nPrata').value;
+    const vBronze = +document.getElementById('vBronze').value;
+    const nBronze = +document.getElementById('nBronze').value;
+    const nIng = +document.getElementById('nIngressos').value;
+    const vIng = +document.getElementById('vIngresso').value;
+    const cLocal = +document.getElementById('cLocal').value;
+    const cConteudo = +document.getElementById('cConteudo').value;
+    const cCoffee = +document.getElementById('cCoffee').value;
+    const cProducao = +document.getElementById('cProducao').value;
+    const cMkt = +document.getElementById('cMkt').value;
+    const cFilm = +document.getElementById('cFilm').value;
+    const cConting = +document.getElementById('cConting').value;
+
+    const rOuro = nOuro * vOuro;
+    const rPrata = nPrata * vPrata;
+    const rBronze = nBronze * vBronze;
+    const rIng = nIng * vIng;
+    const totalRec = rOuro + rPrata + rBronze + rIng;
+
+    const imposto = totalRec * aliq;
+    const impostoBase = totalRec * 0.10;
+    const economia = impostoBase - imposto;
+
+    const coffeeTotal = nPart * cCoffee;
+    const custoOp = cLocal + cConteudo + coffeeTotal + cProducao + cMkt + cFilm + cConting;
+    const custoTotal = custoOp + imposto;
+    const lucro = totalRec - custoTotal;
+    const margem = totalRec > 0 ? (lucro / totalRec) * 100 : 0;
+
+    document.getElementById('vNParticipantes').textContent = nPart + ' pessoa' + (nPart === 1 ? '' : 's');
+    document.getElementById('vAliquota').textContent = (+document.getElementById('aliquota').value).toFixed(1) + '%';
+    document.getElementById('vVOuro').textContent = fmt(vOuro);
+    document.getElementById('vNOuro').textContent = nOuro + ' cota' + (nOuro === 1 ? '' : 's');
+    document.getElementById('vVPrata').textContent = fmt(vPrata);
+    document.getElementById('vNPrata').textContent = nPrata + ' cota' + (nPrata === 1 ? '' : 's');
+    document.getElementById('vVBronze').textContent = fmt(vBronze);
+    document.getElementById('vNBronze').textContent = nBronze + ' cota' + (nBronze === 1 ? '' : 's');
+    document.getElementById('vNIngressos').textContent = nIng + ' ingresso' + (nIng === 1 ? '' : 's');
+    document.getElementById('vVIngresso').textContent = fmt(vIng);
+    document.getElementById('vCLocal').textContent = fmt(cLocal);
+    document.getElementById('vCConteudo').textContent = fmt(cConteudo);
+    document.getElementById('vCCoffee').textContent = 'R$ ' + cCoffee + '/pessoa';
+    document.getElementById('vCProducao').textContent = fmt(cProducao);
+    document.getElementById('vCMkt').textContent = fmt(cMkt);
+    document.getElementById('vCFilm').textContent = fmt(cFilm);
+    document.getElementById('vCConting').textContent = fmt(cConting);
+
+    document.getElementById('mReceita').textContent = fmt(totalRec);
+    document.getElementById('mImposto').textContent = fmt(imposto);
+    document.getElementById('mCusto').textContent = fmt(custoOp);
+    document.getElementById('mCustoTotal').textContent = fmt(custoTotal);
+
+    const lucroEl = document.getElementById('mLucro');
+    lucroEl.textContent = fmt(lucro);
+    lucroEl.className = 'metric-value ' + (lucro >= 75000 ? 'green' : lucro >= 0 ? 'neutral' : 'red');
+
+    const margemEl = document.getElementById('mMargem');
+    margemEl.textContent = pct(margem);
+    margemEl.className = 'metric-value ' + (margem >= 30 ? 'green' : margem >= 0 ? 'neutral' : 'red');
+
+    const econEl = document.getElementById('mEconomia');
+    if (Math.abs(economia) < 100) {
+      econEl.textContent = '—';
+      econEl.className = 'metric-value neutral';
+    } else if (economia > 0) {
+      econEl.textContent = '+' + fmt(economia);
+      econEl.className = 'metric-value green';
+    } else {
+      econEl.textContent = fmt(economia);
+      econEl.className = 'metric-value red';
+    }
+
+    const max = Math.max(totalRec, custoTotal, 1);
+    document.getElementById('barOuro').style.width = Math.round((rOuro/max)*100) + '%';
+    document.getElementById('barPrata').style.width = Math.round((rPrata/max)*100) + '%';
+    document.getElementById('barBronze').style.width = Math.round((rBronze/max)*100) + '%';
+    document.getElementById('barIng').style.width = Math.round((rIng/max)*100) + '%';
+    document.getElementById('barImp').style.width = Math.round((imposto/max)*100) + '%';
+    document.getElementById('barCusto').style.width = Math.round((custoOp/max)*100) + '%';
+    document.getElementById('barOuroVal').textContent = fmt(rOuro);
+    document.getElementById('barPrataVal').textContent = fmt(rPrata);
+    document.getElementById('barBronzeVal').textContent = fmt(rBronze);
+    document.getElementById('barIngVal').textContent = fmt(rIng);
+    document.getElementById('barImpVal').textContent = fmt(imposto);
+    document.getElementById('barCustoVal').textContent = fmt(custoOp);
+
+    const sb = document.getElementById('statusBox');
+    if (lucro >= 75000) {
+      sb.className = 'status-box status-ok';
+      sb.textContent = '✓ Meta de R$ 75.000 atingida. Lucro líquido: ' + fmt(lucro) + ' (' + pct(margem) + ' de margem). Imposto: ' + fmt(imposto) + '.';
+    } else if (lucro >= 0) {
+      sb.className = 'status-box status-warn';
+      sb.textContent = '⚠ Evento viável mas abaixo da meta. Faltam ' + fmt(75000 - lucro) + ' para atingir R$ 75.000 de lucro líquido.';
+    } else {
+      sb.className = 'status-box status-bad';
+      sb.textContent = '✗ Evento no prejuízo (' + fmt(lucro) + '). Ajuste as cotas, reduza custos ou reveja o cenário.';
+    }
+  }
+
+  function resetar() {
+    Object.entries(defaults).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+    calc();
+  }
+
+  document.querySelectorAll('input[type=range]').forEach(el => el.addEventListener('input', calc));
+  calc();
+</script>
+</body>
+</html>

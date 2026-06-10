@@ -11,10 +11,14 @@
             "id": "5cca461d55c92a95",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "01 - Projetos/O Clube dos Médicos/O Clube dos Médicos.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "O Clube dos Médicos"
             }
           }
         ]
